@@ -1,3 +1,4 @@
+
 // Je gaat functies schrijven die we kunnen hergebruiken om een lijst met eindcijfers van studenten te checken. Je zult over de cijfers heen moeten itereren (hoe pak je dat aan?),
 // maar ook een manier moeten vinden om hetgeen dat je verzamelt ergens te bundelen. Op deze manier zul je ontdekken hoe je omgaat met scope. Pak vooral het hoofdstuk op EdHub over for-loops er nog eens bij!
 // Tip: je mag hier geen ingebouwde object methoden gebruiken, dus daar hoef je niet naar te kijken.
@@ -27,7 +28,16 @@ const grades = [9, 8, 5, 7, 7, 4, 9, 8, 8, 3, 6, 8, 5, 6];
 // cumLaude([6, 4, 5]) geeft 0
 // cumLaude([8, 9, 4, 6, 10]) geeft 3
 
-
+function cumLaudeList (gradeList, minimumValue){
+    let successfulNumbers = [];
+    for (let i = 0; i < gradeList.length; i++) {
+        if (gradeList[i] >= minimumValue){
+            successfulNumbers.push(gradeList[i]);
+        }
+    }
+    return successfulNumbers;
+}
+console.log("Opdracht 1: "+cumLaudeList(grades,8).length);
 
 
 /* Opdracht  2: Gemiddeld cijfer */
@@ -43,6 +53,7 @@ const grades = [9, 8, 5, 7, 7, 4, 9, 8, 8, 3, 6, 8, 5, 6];
 // ---- Verwachte uitkomst: 6.642857142857143
 
 
+
 /* 2b: Omschrijven tot een herbruikbare functie */
 // Schrijf een functie genaamd averageGrade, die een array van cijfers verwacht (zoals grades) en het gemiddelde cijfer teruggeeft. Gebruik hiervoor jouw antwoord van 2a.
 // Zorg ervoor dat jouw functie ook werkt als we een andere array willen checken, zoals bijvoorbeeld: [6, 4, 5] of [8, 9, 4, 6, 10].
@@ -53,12 +64,23 @@ const grades = [9, 8, 5, 7, 7, 4, 9, 8, 8, 3, 6, 8, 5, 6];
 // averageGrade([6, 4, 5]) geeft xxxx
 // averageGrade([8, 9, 4, 6, 10]) geeft xxxx
 
+function averageGrade (allValues){
+    var total = 0;
+    let averageNumber;
+    for (let i = 0; i < allValues.length; i++) {
+        total += allValues[i];
+    }
+    averageNumber = total / (allValues.length);
+    return averageNumber;
+}
+
+console.log("Opdracht 2a: "+averageGrade(grades));
 
 /* 2c: Afronden op twee decimalen */
 // Zorg ervoor dat het gemiddelde cijfer dat wordt teruggegeven uit de functie netjes wordt afgerond op twee decimalen.
 // Tip: Google is your best friend!
 
-
+console.log("Opdracht 2c: "+averageGrade(grades).toFixed(2));
 
 
 /* Bonusopdracht: hoogste cijfer */
@@ -82,3 +104,14 @@ const grades = [9, 8, 5, 7, 7, 4, 9, 8, 8, 3, 6, 8, 5, 6];
 // highestGrade(grades) geeft 9
 // highestGrade([6, 4, 5]) geeft 6
 // highestGrade([8, 9, 4, 6, 10]) geeft 10
+
+function highestGrade (gradeList){
+    let highestNumber = 0;
+    for (let i = 0; i < gradeList.length; i++) {
+        if (gradeList[i] > highestNumber){
+            highestNumber = gradeList[i];
+        }
+    }
+    return highestNumber;
+}
+console.log("Opdracht 3: "+highestGrade(grades));
